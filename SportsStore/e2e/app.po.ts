@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class TodoPage {
+export class SportsStorePage {
   navigateTo() {
     return browser.get('/');
   }

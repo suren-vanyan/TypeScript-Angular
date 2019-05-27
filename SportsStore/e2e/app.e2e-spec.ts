@@ -1,10 +1,10 @@
-import { TodoPage } from './app.po';
+import { SportsStorePage } from './app.po';
 
-describe('todo App', () => {
-  let page: TodoPage;
+describe('sports-store App', () => {
+  let page: SportsStorePage;
 
   beforeEach(() => {
-    page = new TodoPage();
+    page = new SportsStorePage();
   });
 
   it('should display message saying app works', () => {
