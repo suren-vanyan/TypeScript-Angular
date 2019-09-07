@@ -10,7 +10,7 @@
     *ngIf="formgroup.get('email').touched && formgroup.get('email').invalid"
     >
      <small *ngIf="formgroup.get('email').getError('required')">Email is Required</small>
-     <small *ngIf="formgroup.get('email').getError('email')">Email is not Correct</small>
+     <small *ngIf="formgroup.get('email').getError('email')">Incorrect Email </small>
     </div>
   </div>
   <div 
