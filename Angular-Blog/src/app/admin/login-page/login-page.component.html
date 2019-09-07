@@ -1,0 +1,31 @@
+<form  [formGroup]="formgroup" (ngSubmit)="onSubmit()">
+  <h2>Panel for Admin</h2>
+  <div 
+  class="form-group"
+  [ngClass]="{'invalid': formgroup.get('email').touched && formgroup.get('email').invalid}"
+  >
+    <label for="email">Email:</label>
+    <input class="form-control" id="email" type="email" formControlName="email"/>
+    <div class="bg-danger validation"
+    *ngIf="formgroup.get('email').touched && formgroup.get('email').invalid"
+    >
+     <small *ngIf="formgroup.get('email').getError('required')">Email is Required</small>
+     <small *ngIf="formgroup.get('email').getError('email')">Email is not Correct</small>
+    </div>
+  </div>
+  <div 
+  class="form-group"
+  [ngClass]="{'invalid': formgroup.get('password').touched && formgroup.get('password').invalid}"
+  >
+    <label for="passwrod">Password:</label>
+    <input class="form-control" id="passwrod" type="password" formControlName="password" />
+    <div class=" bg-danger validation"
+    *ngIf="formgroup.get('password').touched && formgroup.get('password').invalid">
+      <small *ngIf="formgroup.get('password').getError('required')">Password is Required</small>
+      <small *ngIf="formgroup.get('password').getError('minlength')">Password length must have
+         {{formgroup.get('password').getError('minlength').requiredLength}} letters
+         but now have {{formgroup.get('password').getError('minlength').actualLength}} letters</small>
+    </div>
+  </div>
+  <button [disabled]="formgroup.invalid" class="btn btn-info" type="submit">Login</button>
+</form>
