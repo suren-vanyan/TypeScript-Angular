@@ -27,5 +27,5 @@
          but now have {{formgroup.get('password').getError('minlength').actualLength}} letters</small>
     </div>
   </div>
-  <button [disabled]="formgroup.invalid" class="btn btn-info" type="submit">Login</button>
+  <button [disabled]="formgroup.invalid||submitted" class="btn btn-info" type="submit">Login</button>
 </form>

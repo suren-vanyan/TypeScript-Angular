@@ -14,6 +14,7 @@ export class LoginPageComponent implements OnInit {
 
 
  formgroup:FormGroup;
+ submitted:boolean=false;
 
   constructor(private auth: AuthService,
               private router:Router) {
@@ -22,18 +23,20 @@ export class LoginPageComponent implements OnInit {
   }
 
   onSubmit(){
-    
+    this.submitted = true;
     if(this.formgroup.invalid)
     return;
 
    const user: IUser = {
       email:this.formgroup.value.email,
-      password: this.formgroup.value.password
+      password: this.formgroup.value.password,
     }
 
-    this.auth.login(user).subscribe(a=>{
+    this.auth.login(user).subscribe(a=>{ 
+      this.submitted=false;    
       this.formgroup.reset(),
-      this.router.navigate(['/admin','dashboard'])
+      this.router.navigate(['/admin','dashboard']);
+
     })
   }
   
