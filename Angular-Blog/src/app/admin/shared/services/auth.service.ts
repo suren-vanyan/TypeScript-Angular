@@ -7,16 +7,14 @@ import { Observable } from 'rxjs';
 import {tap,map} from 'rxjs/internal/operators'
 @Injectable()
 export class AuthService {
-   
-   
+    
     get token() : string {
      var expDate= new Date(localStorage.getItem('fb-token-exp'));
      if(new Date()>expDate){
         this.logout();
         return null;
      }
-        return localStorage.getItem('fb-token');
-     
+        return localStorage.getItem('fb-token');    
    }
    
     constructor(private httpClinet:HttpClient) {}
