@@ -58,18 +58,18 @@ function paint() {
 
 function checkColorings(firstEl, secondEl) {
     for (var i = 0; i < firstEl.length; i++) {
-        let isRepeatingItem = true;
+        let itemIsRepeated = true;
         let k = i;
         for (var j = 0; j < secondEl.length; j++) {
             if (k == secondEl.length)
                 k = 0;
             if (firstEl[k] != secondEl[j]) {
-                isRepeatingItem = false;
+                itemIsRepeated = false;
                 break;
             }
             k++;
         }
-        if (isRepeatingItem == true)
+        if (itemIsRepeated == true)
             return true;
     }
     return false;
@@ -78,29 +78,28 @@ function checkColorings(firstEl, secondEl) {
 
 
 function generateAllColorings(sectorsCount, colorsCount) {
-    // var result = new Array(
-    //     [0, 0],
-    //     [0, 1],
-    //     [1, 0],
-    //     [1, 1]
-    // )
-    // return result;
-var cmb;
-cmb = Combinatorics.power(['a','b','c']);
-    let result = [];
-    if (sectorsCount === 0) {
-         result.push(new Array());
-        return result;
+
+    let array = new Array();
+    array.push(new Array());
+    for (var i = 1; i <= sectorsCount; i++) {
+        var tempArray = Recursive(i, colorsCount, array)
+        array=tempArray.slice();
     }
+    return array;
 
-    var tempResult = generateAllColorings(sectorsCount - 1, colorsCount);
-    for (var i = 0; i < tempResult.length; i++) {
+}
 
+function Recursive(sectorsCount, colorsCount, array) {
+
+    let result = [];
+
+    for (var i = 0; i < sectorsCount; i++) {
         for (var j = 0; j < colorsCount; ++j) {
-            var newColoring =[tempResult[i]];
-            newColoring.push(j);
-            result.push(newColoring);
+            let tempResult = array[i].slice();
+            tempResult.push(j);
+            result.push(tempResult);
         }
     }
+
     return result;
 }
