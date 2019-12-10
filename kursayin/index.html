@@ -1,18 +1,49 @@
 <!doctype html>
 <html>
+<style>
+    body {
+        background-image: url("../image/images.jpg");
+    }
+
+    .canv {
+        position: absolute;
+        top: 10px;
+        left: 200px;
+        /* background-image: url("../image/canva.jpg"); */
+    }
+</style>
+
 <head>
     <meta charset="UTF-8" />
     <title>Canvas Test</title>
 </head>
+
 <body>
-    <section>
-        <div>
-            <canvas id="canvas" width="400" height="300"></canvas>
-        </div>
-        <script type="text/javascript" src="./src/script.js"></script>
-        <script src="combinatorics.js"></script>
-    </section>
-    
-    <button type="submit" onclick="paint()">Paint</button>
+    <div>
+        <label for="input1" style="color:gainsboro;"><b>Սեկտորների քանակ:</b></label><br>
+            <input id="input1" type="number" size="30"><br><br>
+        
+        <label for="input2" style="color:gainsboro;"><b>Գույների քանակ:</b></label><br>
+            <input id="input2"  type="number" size="30"><br><br>
+
+        <button type="submit" style="width: 100px; background-color: black" onclick="paint()"><span
+                style="color: blanchedalmond;">Ստանալ ներկումները:</span></button>
+        <p> <input type="button" id="clear" value="Մաքրել Պատուհանը։"></p>
+    </div>
+    <div class="canv">
+        <canvas id="canvas" width="1300" height="530"></canvas>
+    </div>
+    <script type="text/javascript" src="./src/script.js"></script>
+
+    <script>
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        document.getElementById('clear').addEventListener('click',
+            function () {
+                ctx.clearRect(0, 0, canvas.width, canvas.height)
+            }, false)
+    </script>
+
 </body>
+
 </html>
